@@ -15,6 +15,7 @@ function App() {
 		email: string;
 		about: string;
 		age?: number;
+		registered:string;
 	}
 	const [personData, setPersonData] = useState<Array<IData>>();
 	const fetchData = () => {

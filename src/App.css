@@ -75,3 +75,7 @@ padding-top: 5rem;
 	font-size: 0.65rem;
 	font-weight: bold;
 }
+.active{
+	font-weight: bold;
+	margin-bottom: 1rem;
+}

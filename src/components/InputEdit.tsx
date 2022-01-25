@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-
+import moment from 'moment';
 type thisInput = {
 	element:{ name: string;
 			_id: string;
@@ -8,7 +8,8 @@ type thisInput = {
 			isActive: boolean;
 			email: string;
 			about: string;
-			age?: number;},
+			age?: number;
+			registered: string},
 	index: number;
 	saveChange(index:number, newData:IData): void;
 }
@@ -21,6 +22,7 @@ interface IData{
 	email: string;
 	about: string;
 	age?: number;
+	registered:string;
 }
 
 const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
@@ -29,6 +31,10 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 	};
 	const handleSave = () => {
 		saveChange(index, newDetails);
+	};
+	const radioHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		console.log(e.target.value === 'true');
+		setNewDetails({ ...newDetails, [e.target.name]: e.target.value === 'true' });
 	};
 	const [newDetails, setNewDetails] = useState({ ...element });
 	return (
@@ -103,13 +109,36 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 				</div>
 			</td>
 			<td>
-				<div className="mini-headers">ACTIVE</div>
+				<div className="mini-headers">DATE</div>
 				<div>
-					{(element.isActive === false && 'false') || (element.isActive === true && 'true')}
+					{moment(element.registered.substring(0, 13)).format('YYYY-MM-DD')}
 				</div>
 				<div className="input-group">
-					<input placeholder="click to edit" type="text" value={newDetails.name} name="isActive" onChange={e => handleChange(e)} />
+					<input placeholder="click to edit" type="date" name="registered" value={element.registered} onChange={e => handleChange(e)} />
 					<button type="submit" onClick={handleSave}>SAVE</button>
+				</div>
+			</td>
+			<td>
+				<div className="mini-headers">ACTIVE</div>
+				<div className="active">
+					{(element.isActive === false && 'FALSE') || (element.isActive === true && 'TRUE')}
+				</div>
+				<div className="input-group">
+					<fieldset>
+						<p>
+							<label htmlFor="choice-true">
+								True
+								<input type="radio" name="isActive" value="true" id="choice-true" onChange={radioHandler} />
+							</label>
+						</p>
+						<p>
+							<label htmlFor="choice-false">
+								False
+								<input type="radio" name="isActive" value="false" id="choice-false" onChange={radioHandler} />
+							</label>
+						</p>
+						<button type="submit" onClick={handleSave}>SAVE</button>
+					</fieldset>
 				</div>
 			</td>
 		</>
