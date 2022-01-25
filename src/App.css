@@ -27,12 +27,51 @@
 .App-link {
   color: #61dafb;
 }
+table{
+	max-width: 100%;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table,tr,td,th,thead{
+	border: solid 1px gray;
+	border-collapse: collapse;
+	padding: 1rem;
+}
+button{
+	cursor: pointer;
+	display: block;
+	margin: 0.5rem auto;
+	padding: 0.2rem 2rem;
+}
+input{
+	display: block;	
+	margin: 0 auto;
+	width: 100%;
+	margin: 1rem auto 1rem auto;
+}
+.area{
+	width: 80%;
+	margin: 1rem auto 1rem auto;
+	height: 7rem;
+}
+td{
+position: relative;
+padding-top: 5rem;
+}
+
+.input-group{
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+.mini-headers{
+	position: absolute;
+	padding: auto;
+	top: 1rem;
+	left: 35%;
+	left: 0; 
+	right: 0; 
+	margin-left: auto; 
+	margin-right: auto;
+	font-size: 0.65rem;
+	font-weight: bold;
 }
