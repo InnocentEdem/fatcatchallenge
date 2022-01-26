@@ -1,5 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import React, { FC, useState } from 'react';
 import moment from 'moment';
+
 type thisInput = {
 	element:{ name: string;
 			_id: string;
@@ -33,7 +35,6 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 		saveChange(index, newDetails);
 	};
 	const radioHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.value === 'true');
 		setNewDetails({ ...newDetails, [e.target.name]: e.target.value === 'true' });
 	};
 	const [newDetails, setNewDetails] = useState({ ...element });
@@ -60,7 +61,7 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 					<button type="submit" onClick={handleSave}>SAVE</button>
 				</div>
 			</td>
-			<td>
+			<td colSpan={1}>
 				<div className="mini-headers">PICTURE</div>
 				<div>
 					{element.picture}
@@ -90,7 +91,7 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 					<button type="submit" onClick={handleSave}>SAVE</button>
 				</div>
 			</td>
-			<td>
+			<td colSpan={3}>
 				<div className="mini-headers">ABOUT</div>
 				<div>
 					{element.about}
@@ -114,7 +115,7 @@ const InputEdit: React.FC<thisInput> = ({ element, index, saveChange }) => {
 					{moment(element.registered.substring(0, 13)).format('YYYY-MM-DD')}
 				</div>
 				<div className="input-group">
-					<input placeholder="click to edit" type="date" name="registered" value={element.registered} onChange={e => handleChange(e)} />
+					<input placeholder="click to edit" type="date" name="registered" defaultValue={moment(element.registered.substring(0, 13)).format('YYYY-MM-DD')} onChange={e => handleChange(e)} />
 					<button type="submit" onClick={handleSave}>SAVE</button>
 				</div>
 			</td>

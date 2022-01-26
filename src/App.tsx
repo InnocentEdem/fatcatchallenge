@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import data from './data/Data.json';
 import InputEdit from './components/InputEdit';
-import { type } from '@testing-library/user-event/dist/type';
 
 function App() {
 	interface IData{
@@ -18,6 +16,7 @@ function App() {
 		registered:string;
 	}
 	const [personData, setPersonData] = useState<Array<IData>>();
+
 	const fetchData = () => {
 		setPersonData([...data]);
 	};
@@ -41,7 +40,7 @@ function App() {
 				<th>PICTURE</th>
 				<th>AGE</th>
 				<th>EMAIL</th>
-				<th>ABOUT</th>
+				<th colSpan={3}>ABOUT</th>
 				<th>ADDRESS</th>
 				<th>DATE REGISTERED</th>
 				<th>ACTIVE</th>
