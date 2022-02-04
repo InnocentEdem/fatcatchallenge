@@ -8,7 +8,8 @@ import LargeTextInput from './components/LargeTextInput';
 import moment from 'moment';
 import DateInput from './components/DateInput';
 import { MediumTableHeader, LargeTableHeader, SmallTableHeader } from './components/TableHeaders';
-import { LargeContent, MediumContent, SmallContent } from './components/TableContent';
+import { LargeContent, SmallContent } from './components/TableContent';
+import { nanoid } from 'nanoid';
 
 function App() {
 	const [personData, setPersonData] = useState<Array<Record<string, unknown>>>();
@@ -36,24 +37,26 @@ function App() {
 				return (
 					<table>
 						<thead>
-							{
-								typeof el === 'object' &&
-								index === 0 &&
-								el !== null &&
-								Object.keys(el).map((item) => {
-									const result = el[item];
-									const isString = typeof result === 'string';
-									const isDate = isString && moment(result.substring(0, 13)).isValid();
-									const islargeText = isString && result.length > 60;
-									const isBoolean = typeof result === 'boolean';
-									const isNumber = typeof result === 'number';
-									return (isDate && (<SmallTableHeader headerTitle={item} />)) ||
-										(islargeText && (<LargeTableHeader headerTitle={item} />)) ||
-										(isString && (<MediumTableHeader headerTitle={item} />)) ||
-										(isNumber && (<SmallTableHeader headerTitle={item} />)) ||
-										(isBoolean && (<SmallTableHeader headerTitle={item} />));
-								})
-							}
+							<tr>
+								{
+									typeof el === 'object' &&
+									index === 0 &&
+									el !== null &&
+									Object.keys(el).map((item) => {
+										const result = el[item];
+										const isString = typeof result === 'string';
+										const isDate = isString && moment(result.substring(0, 13)).isValid();
+										const islargeText = isString && result.length > 60;
+										const isBoolean = typeof result === 'boolean';
+										const isNumber = typeof result === 'number';
+										return (isDate && (<SmallTableHeader headerTitle={item} />)) ||
+											(islargeText && (<LargeTableHeader headerTitle={item} />)) ||
+											(isString && (<MediumTableHeader headerTitle={item} />)) ||
+											(isNumber && (<SmallTableHeader headerTitle={item} />)) ||
+											(isBoolean && (<SmallTableHeader headerTitle={item} />));
+									})
+								}
+							</tr>
 						</thead>
 						<tbody>
 							<tr>
