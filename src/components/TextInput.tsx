@@ -19,7 +19,7 @@ const TextInput: React.FC<stringInput> = ({
 	};
 	return (
 		<td>
-			<div className="input-group">
+			<div className="medium">
 				<input placeholder="click to edit" type="text" value={newDetails} name="name" onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
 			</div>

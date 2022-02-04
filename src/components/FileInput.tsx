@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import data from '../data/Data.json';
 
 type fileupload = {
 	fetchData(upload: Array<unknown>): void;
@@ -9,11 +10,19 @@ const FileInput: React.FC<fileupload> = ({ fetchData }) => {
 		ans !== undefined && fetchData(JSON.parse(ans));
 	};
 
+	const loadInternal = () => {
+		fetchData(data);
+	};
+
 	return (
 		<div>
 			<label id="fileInput" htmlFor="myFile">
-				Please Upload a file of Type extension &lsquo;.json &lsquo;
-				<input type="file" accept=".json" id="myFile" onChange={handleChange} />
+				<button type="button" id="fileload" onClick={loadInternal}>Load Application Internal Data</button>
+				<div className="divisor">OR</div>
+				<div className="upload">
+					Upload a JSON File
+					<input type="file" accept=".json" id="myFile" onChange={handleChange} />
+				</div>
 			</label>
 		</div>
 	);

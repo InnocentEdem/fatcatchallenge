@@ -19,10 +19,7 @@ const BooleanInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value === 'true');
 	};
 	return (
-		<td>
-			<div className="active">
-				{(param === false && 'FALSE') || (param === true && 'TRUE')}
-			</div>
+		<td className="medium">
 			<div className="input-group">
 				<fieldset>
 					<p>

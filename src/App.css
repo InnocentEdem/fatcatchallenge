@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 table{
-	/* max-width: 100%; */
+	max-width: 100%;
 }
 
 table,tr,td,th,thead{
@@ -85,6 +85,38 @@ padding-top: 5rem;
 }
 #fileInput{
 	display: block;
-	margin: 20vh auto auto 10vw;
+	margin: 20vh 10rem auto 10rem;
 	font-size: 1.5rem;
+	border: solid 1px gray;
+}
+#fileload{
+	border: solid 2px rgb(56, 56, 56);
+	border-radius: 5px;
+	padding: 1rem 3rem;
+	font-size: 1rem;
+}
+.divisor{
+	margin-left: 48%;
+	font-weight: bold;
+}
+.upload{
+	text-align: center;
+}
+#booleanComp{
+	width: 5%;
+}
+#largeInput{
+	width: 30rem;
+}
+.large{
+	min-width: 20rem;
+}
+.small{
+	min-width: 10rem;
+}
+.medium{
+	min-width: 15rem;
+}
+input{
+	min-width: 5rem;
 }
