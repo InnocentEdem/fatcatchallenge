@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
+import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
@@ -19,7 +20,7 @@ const BooleanInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value === 'true');
 	};
 	return (
-		<td className="medium">
+		<td className="medium" key={nanoid()}>
 			<div className="input-group">
 				<fieldset>
 					<p>
@@ -40,4 +41,4 @@ const BooleanInput: React.FC<stringInput> = ({
 		</td>
 	);
 };
-export default BooleanInput;
+export default memo(BooleanInput);

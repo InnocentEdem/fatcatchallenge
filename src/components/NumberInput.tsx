@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
@@ -14,11 +15,11 @@ const NumberInput: React.FC<stringInput> = ({
 	const handleSave = () => {
 		saveChange(index, item, newDetails);
 	};
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewDetails(+e.target.value);
 	};
 	return (
-		<td>
+		<td key={nanoid()}>
 			<div className="small">
 				<input placeholder="click to edit" type="number" value={newDetails} name="name" onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
@@ -26,4 +27,4 @@ const NumberInput: React.FC<stringInput> = ({
 		</td>
 	);
 };
-export default NumberInput;
+export default React.memo(NumberInput);

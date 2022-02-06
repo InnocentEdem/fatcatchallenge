@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import moment from 'moment';
+import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
@@ -15,11 +16,11 @@ const DateInput: React.FC<stringInput> = ({
 	const handleSave = () => {
 		saveChange(index, item, newDetails);
 	};
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td>
+		<td key={nanoid()}>
 			<div className="small">
 				<input placeholder="click to edit" type="date" name="registered" defaultValue={moment(param.substring(0, 13)).format('YYYY-MM-DD')} onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
@@ -27,4 +28,4 @@ const DateInput: React.FC<stringInput> = ({
 		</td>
 	);
 };
-export default DateInput;
+export default memo(DateInput);

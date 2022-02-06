@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
+import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
@@ -14,11 +15,11 @@ const TextInput: React.FC<stringInput> = ({
 	const handleSave = () => {
 		saveChange(index, item, newDetails);
 	};
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td>
+		<td key={nanoid()}>
 			{item !== '_id' &&
 				(
 					<div className="medium">
@@ -35,4 +36,4 @@ const TextInput: React.FC<stringInput> = ({
 		</td>
 	);
 };
-export default TextInput;
+export default memo(TextInput);

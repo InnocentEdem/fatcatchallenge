@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
 import FileInput from './components/FileInput';
 import TextInput from './components/TextInput';
@@ -20,15 +20,12 @@ function App() {
 		}
 	};
 
-	const saveChange = (index: number, key: string, newData: string | number|boolean): void => {
-		if (typeof personData === 'object') {
-			const newArr: Array<Record<string, unknown>> = [...personData];
-			if (typeof newArr[index][key] === typeof newData) {
-				newArr[index][key] = newData;
-			}
-			setPersonData([...newArr]);
-		}
-	};
+	const saveChange = useCallback((index: number, key: string, newData: string | number | boolean): void => {
+		console.log(index, newData);
+		setPersonData(prev => prev?.map((item, i) => {
+			return i === index ? { ...item, [key]: newData } : item;
+		}));
+	}, []);
 
 	return (
 		<>
@@ -70,12 +67,13 @@ function App() {
 										const isBoolean = typeof result === 'boolean';
 										const islargeText = isString && result.length > 60;
 										const isDate = isString && moment((el[item] as string).substring(0, 13)).isValid();
+										console.log('refreshing');
 										return (
-											(isDate && <SmallContent content={moment((el[item] as string).substring(0, 13)).format('YYYY-MM-DD')} />) ||
-											(islargeText && <LargeContent content={result as string} />) ||
-											(isString && <SmallContent content={result as string} />) ||
-											(isNumber && <SmallContent content={result as number} />) ||
-											(isBoolean && <SmallContent content={result === true ? 'TRUE' : 'FALSE'} />));
+											(isDate && <SmallContent key={nanoid()} content={moment((el[item] as string).substring(0, 13)).format('YYYY-MM-DD')} />) ||
+											(islargeText && <LargeContent key={nanoid()} content={result as string} />) ||
+											(isString && <SmallContent key={nanoid()} content={result as string} />) ||
+											(isNumber && <SmallContent key={nanoid()} content={result as number} />) ||
+											(isBoolean && <SmallContent key={nanoid()} content={result === true ? 'TRUE' : 'FALSE'} />));
 									})
 								}
 							</tr>

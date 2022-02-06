@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, memo, useCallback } from 'react';
+import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
@@ -14,11 +15,11 @@ const LargeTextInput: React.FC<stringInput> = ({
 	const handleSave = () => {
 		saveChange(index, item, newDetails);
 	};
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td className="large">
+		<td className="large" key={nanoid()}>
 			<div className="input-group">
 				<textarea className="area" placeholder="click to edit" name="address" value={newDetails} onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
@@ -26,4 +27,4 @@ const LargeTextInput: React.FC<stringInput> = ({
 		</td>
 	);
 };
-export default LargeTextInput;
+export default memo(LargeTextInput);
