@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { nanoid } from 'nanoid';
 
 type stringheader = {
 	content: string|number;
 }
 
-export const LargeContent: React.FC<stringheader> = ({ content }) => {
+export const LargeContent: React.FC<stringheader> = memo(({ content }) => {
 	return (
 		<td className="large">{content}</td>
 	);
-};
-export const SmallContent: React.FC<stringheader> = ({ content }) => {
+});
+export const SmallContent: React.FC<stringheader> = memo(({ content }) => {
 	return (
 		<td className="small">{content}</td>
 	);
-};
-export const MediumContent: React.FC<stringheader> = ({ content }) => {
+});
+export const MediumContent: React.FC<stringheader> = memo(({ content }) => {
 	return (
 		<td className="medium">{content}</td>
 	);
-};
+},);

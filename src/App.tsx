@@ -13,6 +13,7 @@ import { nanoid } from 'nanoid';
 
 function App() {
 	const [personData, setPersonData] = useState<Array<Record<string, unknown>>>();
+	const { Children } = React;
 
 	const fetchData = (upload:Array<Record<string, unknown>>) => {
 		if (typeof upload === 'object') {
@@ -39,7 +40,7 @@ function App() {
 									typeof el === 'object' &&
 									index === 0 &&
 									el !== null &&
-									Object.keys(el).map((item) => {
+									Children.toArray(Object.keys(el).map((item) => {
 										const result = el[item];
 										const isString = typeof result === 'string';
 										const isDate = isString && moment(result.substring(0, 13)).isValid();
@@ -51,7 +52,7 @@ function App() {
 											(isString && (<MediumTableHeader headerTitle={item} />)) ||
 											(isNumber && (<SmallTableHeader headerTitle={item} />)) ||
 											(isBoolean && (<SmallTableHeader headerTitle={item} />));
-									})
+									}))
 								}
 							</tr>
 						</thead>
@@ -60,28 +61,27 @@ function App() {
 								{
 									typeof el === 'object' &&
 									el !== null &&
-									Object.keys(el).map((item) => {
+									Children.toArray(Object.keys(el).map((item) => {
 										const result = el[item];
 										const isString = typeof result === 'string';
 										const isNumber = typeof result === 'number';
 										const isBoolean = typeof result === 'boolean';
 										const islargeText = isString && result.length > 60;
 										const isDate = isString && moment((el[item] as string).substring(0, 13)).isValid();
-										console.log('refreshing');
 										return (
-											(isDate && <SmallContent key={nanoid()} content={moment((el[item] as string).substring(0, 13)).format('YYYY-MM-DD')} />) ||
-											(islargeText && <LargeContent key={nanoid()} content={result as string} />) ||
-											(isString && <SmallContent key={nanoid()} content={result as string} />) ||
-											(isNumber && <SmallContent key={nanoid()} content={result as number} />) ||
-											(isBoolean && <SmallContent key={nanoid()} content={result === true ? 'TRUE' : 'FALSE'} />));
-									})
+											(isDate && <SmallContent content={moment((el[item] as string).substring(0, 13)).format('YYYY-MM-DD')} />) ||
+											(islargeText && <LargeContent content={result as string} />) ||
+											(isString && <SmallContent content={result as string} />) ||
+											(isNumber && <SmallContent content={result as number} />) ||
+											(isBoolean && <SmallContent content={result === true ? 'TRUE' : 'FALSE'} />));
+									}))
 								}
 							</tr>
 							<tr>
 								{
 									typeof el === 'object' &&
 									el !== null &&
-									Object.keys(el).map((item) => {
+									Children.toArray(Object.keys(el).map((item) => {
 										const result = el[item];
 										const isString = typeof result === 'string';
 										const isDate = isString && moment(result.substring(0, 13)).isValid();
@@ -93,7 +93,7 @@ function App() {
 											(isString && (<TextInput index={index} item={item} param={result} saveChange={saveChange} />)) ||
 											(isNumber && (<NumberInput index={index} item={item} param={result} saveChange={saveChange} />)) ||
 											(isBoolean && (<BooleanInput index={index} item={item} param={result} saveChange={saveChange} />));
-									})
+									}))
 								}
 							</tr>
 						</tbody>

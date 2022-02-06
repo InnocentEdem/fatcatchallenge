@@ -19,7 +19,7 @@ const NumberInput: React.FC<stringInput> = ({
 		setNewDetails(+e.target.value);
 	};
 	return (
-		<td key={nanoid()}>
+		<td>
 			<div className="small">
 				<input placeholder="click to edit" type="number" value={newDetails} name="name" onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>

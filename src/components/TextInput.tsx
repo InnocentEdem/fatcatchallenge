@@ -19,11 +19,11 @@ const TextInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td key={nanoid()}>
+		<td>
 			{item !== '_id' &&
 				(
 					<div className="medium">
-						<input placeholder="click to edit" type="text" value={newDetails} name="name" onChange={e => handleChange(e)} />
+						<input placeholder="click to edit" type="text" defaultValue={newDetails} name="name" onChange={handleChange} />
 						<button type="submit" onClick={handleSave}>SAVE</button>
 					</div>
 				)}

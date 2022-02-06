@@ -20,7 +20,7 @@ const BooleanInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value === 'true');
 	};
 	return (
-		<td className="medium" key={nanoid()}>
+		<td className="medium">
 			<div className="input-group">
 				<fieldset>
 					<p>

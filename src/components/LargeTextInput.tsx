@@ -19,7 +19,7 @@ const LargeTextInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td className="large" key={nanoid()}>
+		<td className="large">
 			<div className="input-group">
 				<textarea className="area" placeholder="click to edit" name="address" value={newDetails} onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>

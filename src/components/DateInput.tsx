@@ -20,7 +20,7 @@ const DateInput: React.FC<stringInput> = ({
 		setNewDetails(e.target.value);
 	};
 	return (
-		<td key={nanoid()}>
+		<td>
 			<div className="small">
 				<input placeholder="click to edit" type="date" name="registered" defaultValue={moment(param.substring(0, 13)).format('YYYY-MM-DD')} onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
