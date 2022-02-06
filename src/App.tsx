@@ -22,7 +22,6 @@ function App() {
 	};
 
 	const saveChange = useCallback((index: number, key: string, newData: string | number | boolean): void => {
-		console.log(index, newData);
 		setPersonData(prev => prev?.map((item, i) => {
 			return i === index ? { ...item, [key]: newData } : item;
 		}));
