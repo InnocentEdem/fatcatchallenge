@@ -21,7 +21,7 @@ const NumberInput: React.FC<stringInput> = ({
 	return (
 		<td>
 			<div className="small">
-				<input placeholder="click to edit" type="number" value={newDetails} name="name" onChange={e => handleChange(e)} />
+				<input id="numberInput" placeholder="click to edit" type="number" value={newDetails} name="name" onChange={e => handleChange(e)} />
 				<button type="submit" onClick={handleSave}>SAVE</button>
 			</div>
 		</td>

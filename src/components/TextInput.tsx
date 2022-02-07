@@ -18,12 +18,19 @@ const TextInput: React.FC<stringInput> = ({
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setNewDetails(e.target.value);
 	};
+	const validateEmail = (email:string) => {
+		return String(email)
+			.toLowerCase()
+			.match(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			);
+	};
 	return (
 		<td>
 			{item !== '_id' &&
 				(
 					<div className="medium">
-						<input placeholder="click to edit" type="text" defaultValue={newDetails} name="name" onChange={handleChange} />
+						<input placeholder="click to edit" type={validateEmail(param) ? 'email' : 'text'} defaultValue={newDetails} name="name" onChange={handleChange} />
 						<button type="submit" onClick={handleSave}>SAVE</button>
 					</div>
 				)}
