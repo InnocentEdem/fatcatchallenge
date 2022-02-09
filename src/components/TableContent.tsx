@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { nanoid } from 'nanoid';
 
 type stringheader = {
 	content: string|number;

@@ -9,7 +9,6 @@ import moment from 'moment';
 import DateInput from './components/DateInput';
 import { MediumTableHeader } from './components/TableHeaders';
 import { LargeContent, SmallContent } from './components/TableContent';
-import { nanoid } from 'nanoid';
 
 function App() {
 	const [personData, setPersonData] = useState<Array<Record<string, unknown>>>(); //	Create state for storing expected json data

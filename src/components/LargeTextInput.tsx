@@ -1,5 +1,4 @@
-import React, { useState, memo, useCallback } from 'react';
-import { nanoid } from 'nanoid';
+import React, { useState, memo } from 'react';
 
 type stringInput = {
 	index: number;

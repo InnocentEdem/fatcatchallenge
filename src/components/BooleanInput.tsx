@@ -1,5 +1,4 @@
 import React, { useState, memo } from 'react';
-import { nanoid } from 'nanoid';
 
 type stringInput = {
 	index: number;
