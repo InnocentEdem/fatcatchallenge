@@ -8,7 +8,7 @@ import LargeTextInput from './components/LargeTextInput';
 import moment from 'moment';
 import DateInput from './components/DateInput';
 import { MediumTableHeader } from './components/TableHeaders';
-import { LargeContent, SmallContent, } from './components/TableContent';
+import { LargeContent, SmallContent } from './components/TableContent';
 
 function App() {
 	const [personData, setPersonData] = useState<Array<Record<string, unknown>>>(); //	Create state for storing expected json data
